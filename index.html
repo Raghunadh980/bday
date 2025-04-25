@@ -298,6 +298,13 @@
           opacity: 0;
         }
       }
+      .end-image {
+        display: block;
+        margin: 20px auto 0 auto;
+        width: 250px;
+        border-radius: 10px;
+        animation: text3D 1s forwards;
+      }
     }
   </style>
 </head>
@@ -403,6 +410,10 @@
         <span style="animation-delay: 26.5s;">Malli inkosari puttina roju jai jai lu chitti papayi 🎂🎂🎂 </span>
         <span style="animation-delay: 27.5s;">May all your dreams come true! 👩🏻‍⚕👩🏻‍⚕</span>
         <span style="animation-delay: 28.5s;">You deserve the very best today 🥳 and always! 🫂🥳🫂</span>
+        <span style="animation-delay: 29.5s;">Best Wishes from Raghunadh......</span>
+        <span style="animation-delay: 30.5s;">
+          <img src="gibli.jpg" alt="Cute Memory" class="end-image" />
+        </span>
       </div>
     </div>
   </section>
@@ -415,6 +426,12 @@
     function showMessage() {
       const messageBox = document.getElementById("message-box");
       messageBox.style.display = "block";
+      setTimeout(() => {
+        const endImage = document.querySelector('.end-image');
+        if (endImage) {
+          endImage.style.display = 'block'; // Show the image
+        }
+      }, 29500);
     }
 
     function updateTime() {
