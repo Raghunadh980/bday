@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday 🎂</title>
+  <style>
+    
+
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #f5c6ec);
+      overflow-x: hidden;
+      color: #d63384;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      margin-top: 0.5rem;
+    }
+
+    .timer-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .timer-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .timer-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .time-box {
+      background-color: #fff0f6;
+      border-radius: 12px;
+      padding: 1rem;
+      width: 100px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: float 3s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+    
+    .time-box:hover {
+      transform: scale(1.05);
+    }
+    
+    .time-box div {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #c2185b;
+    }
+    
+    .time-box small {
+      font-size: 0.9rem;
+      color: #6a1b9a;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .balloon-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 10px;
+      padding: 0 10px;
+    }
+
+    .balloon {
+      width: 80px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #ff69b4;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: white;
+      font-weight: bold;
+      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      width: 2px;
+      height: 40px;
+      background: #999;
+      transform: translateX(-50%);
+    }
+
+    .cake-section {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .enhanced-cake {
+      position: relative;
+      width: 150px;
+      height: 180px;
+      margin: 2rem auto;
+      animation: bounceCake 2s infinite;
+    }
+
+    .layer {
+      width: 150px;
+      height: 40px;
+      background: #ff69b4;
+      border-radius: 20px;
+      margin-bottom: 5px;
+      border: 2px solid #fff;
+      animation: cakeLayerBounce 1s ease-in-out infinite;
+    }
+
+    .layer1 { background: #ffb6c1; }
+    .layer2 { background: #ff69b4; }
+    .layer3 { background: #ff1493; }
+
+    .candle {
+      width: 10px;
+      height: 40px;
+      background: #fff;
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .flame {
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(ellipse at center, #ff0 0%, #f90 60%, #f00 100%);
+      border-radius: 50%;
+      position: absolute;
+      top: -15px;
+      left: -2.5px;
+      animation: flicker 0.5s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+    }
+
+    @keyframes bounceCake {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes cakeLayerBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .message-btn {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      background-color: #d63384;
+      color: #fff;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .message-btn:hover {
+      background-color: #ad1d65;
+    }
+
+    .message-box {
+      display: none;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .birthday-text span {
+      display: block;
+      margin: 0.7rem 0;
+      font-family: 'Pacifico', cursive;
+      font-size: 1rem;
+      transform: rotateX(90deg);
+      opacity: 0;
+      animation: text3D 1s forwards;
+    }
+
+    @keyframes text3D {
+      0% {
+        transform: rotateX(90deg) translateY(30px);
+        opacity: 0;
+      }
+      100% {
+        transform: rotateX(0deg) translateY(0);
+        opacity: 1;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
+    }
+
+    .footer {
+      text-align: center;
+      background-color: #ffd6e7;
+      padding: 1.5rem;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .confetti, .emoji-fall {
+      position: absolute;
+      top: -10px;
+      animation: fall 6s infinite linear;
+    }
+
+    .confetti {
+      width: 10px;
+      height: 10px;
+      background-color: #f06292;
+      border-radius: 50%;
+    }
+
+    .emoji-fall {
+      font-size: 24px;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .balloon {
+        width: 60px;
+        height: 80px;
+        font-size: 1rem;
+      }
+
+      .birthday-text span {
+        font-size: 1.5rem;
+      }
+
+      .timer-grid {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+      .emoji-fall {
+        font-size: 24px;
+      }
+  
+      @keyframes fall {
+        0% {
+          transform: translateY(-10px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎉🎉🎉🎉 Happyyyyyyyyyyy Birthdayyyyyyyyyy tooooooooo youuuuuuuu! 🎉🎉🎉🎉</h1>
+    <p>Wishing you joy, cake, and endless celebration!</p>
+  </header>
+
+  <section class="timer-section">
+    <h2>⏰ Moments Since Your First Breath</h2>
+    <div class="timer-grid">
+      <div class="time-box">
+        <div id="days">0</div>
+        <small>Days</small>
+      </div>
+      <div class="time-box">
+        <div id="hours">0</div>
+        <small>Hours</small>
+      </div>
+      <div class="time-box">
+        <div id="minutes">0</div>
+        <small>Minutes</small>
+      </div>
+      <div class="time-box">
+        <div id="seconds">0</div>
+        <small>Seconds</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="balloon-container">
+    <div class="balloon">H</div>
+    <div class="balloon">A</div>
+    <div class="balloon">P</div>
+    <div class="balloon">P</div>
+    <div class="balloon">Y</div>
+    <div class="balloon">🎈</div>
+    <div class="balloon">B</div>
+    <div class="balloon">I</div>
+    <div class="balloon">R</div>
+    <div class="balloon">T</div>
+    <div class="balloon">H</div>
+    <div class="balloon">D</div>
+    <div class="balloon">A</div>
+    <div class="balloon">Y</div>
+    <div class="balloon">🎈</div>
+    <div class="balloon">🐷</div>
+    <div class="balloon">M</div>
+    <div class="balloon">Y</div>
+    <div class="balloon">🐷</div>
+    <div class="balloon">B</div>
+    <div class="balloon">E</div>
+    <div class="balloon">S</div>
+    <div class="balloon">T</div>
+    <div class="balloon">🐷</div>
+    <div class="balloon">F</div>
+    <div class="balloon">R</div>
+    <div class="balloon">I</div>
+    <div class="balloon">E</div>
+    <div class="balloon">N</div>
+    <div class="balloon">D</div>
+  </section>
+
+  <section class="cake-section">
+    <h2>🎂</h2>
+    <div class="cake-image">
+      <img src="images/cakeAfter.jpg" alt="Birthday Cake" width="300" height="300" />
+    </div>
+    </div>
+
+    <button onclick="showMessage()" class="message-btn">🎁 A Message for you</button>
+
+    <div id="message-box" class="message-box">
+      <div class="birthday-text">
+        <span style="animation-delay: 0.5s;">Once again Many more happyyy returns🎂of the day chanduu 🐷🥳🥳</span>
+        <span style="animation-delay: 1.5s;">You are a precious god's gift🎁🎁to me my friend🫂</span>
+        <span style="animation-delay: 2.5s;">Mana friendship🤗start ayyi More than 3 years aindi ⿣🤟🏻🤟🏻</span>
+        <span style="animation-delay: 3.5s;">Asalu online lo parichayam ayyi ipatiki ila close ga unnam 🫠🫠👻</span>
+        <span style="animation-delay: 4.5s;">manam kalavadam, enni godavalu aina 🤥🤥 kuda malli matladukovadam 🥺🫰🏻</span>
+        <span style="animation-delay: 5.5s;">Idi oka repeated process aipoindi ♾🔁, ninnu edo okati anadam 😂😂 </span>
+        <span style="animation-delay: 6.5s;">na noti doola valla nv hurt avvadam 🥺🥺 malla ninnu brathimaladam 🤣</span>
+        <span style="animation-delay: 7.5s;">its never ending story 🤩🐖, nenu tagginchukunta i am promising to you 🤗</span>
+        <span style="animation-delay: 8.5s;">Sometimes nv kuda ardam chesko 🤥nannu and na emotions its only my request maa 🥺🥺</span>
+        <span style="animation-delay: 9.5s;">Don't ever feel alone 🐷, i am with you always i promise 🫂 </span>
+        <span style="animation-delay: 10.5s;">ni life lo evaru unna lekapoina nen niku support chesta 😁😁</span>
+        <span style="animation-delay: 11.5s;">U supported me well 🫂🥺,  and i will be there for you no matter what 🤗</span>
+        <span style="animation-delay: 12.5s;">nen edaina ante adhi just kopam lo anta anthe, dont take personally 🙃🙃</span>
+        <span style="animation-delay: 13.5s;">inka aa sodhi vadilesey bore kottindemo chadivi 😂😂🤣</span>
+        <span style="animation-delay: 14.5s;">ninnu tappa ila evarni tittalenu matladalenemo edi vaste adhi anesta 🐖🐗🐃🧸</span>
+        <span style="animation-delay: 15.5s;">antha bond ochindi mana madya 👫, nen eppudu anukole oka ammayi tho ilanti bond ostadhi ani 🥺🤩</span>
+        <span style="animation-delay: 16.5s;">ilage manam godava padudam 🐖, tittukundam 🐃, kottukundam 🧸</span>
+        <span style="animation-delay: 17.5s;">kaani matladukundham.... 🥺🥺🥺</span>
+        <span style="animation-delay: 18.5s;">Nak inka em cheppalo teliyatle aapesta iga 😂😂🤣 </span>
+        <span style="animation-delay: 19.5s;">future lo doctor 👩🏻‍⚕ayyaka nannu dekalev anuko chetabadi chepista 🤪🤪</span>
+        <span style="animation-delay: 20.5s;">munde future lo hospital 🏥 tirgute ninnu vaadukovali chaala 😝🤪 </span>
+        <span style="animation-delay: 21.5s;">free treatment and all other facilities 😌😌😏, future lo avasrm unta ani</span>
+        <span style="animation-delay: 22.5s;">ipudu natho matladutundu ani anukoku nak telsu ni burra 🧠🧠ila anukuntav ani 😂🤣</span>
+        <span style="animation-delay: 23.5s;">manchiga chadvukoni pedda doctor avvu maa 👩🏻‍⚕🫂, elanti distractions petukoku 🐷</span>
+        <span style="animation-delay: 24.5s;">Aipoindi le inka 😂, manchiga enjoy chey natho time spend chey 🤪 </span>
+        <span style="animation-delay: 25.5s;">inka baaaaga tini 🍽🍔baaaaga pandi laaga 🐖🐖 avvuu ninnu ekkirinchali ga mari 😂😂</span>
+        <span style="animation-delay: 26.5s;">Malli inkosari puttina roju jai jai lu chitti papayi 🎂🎂🎂 </span>
+        <span style="animation-delay: 27.5s;">May all your dreams come true! 👩🏻‍⚕👩🏻‍⚕</span>
+        <span style="animation-delay: 28.5s;">You deserve the very best today 🥳 and always! 🫂🥳🫂</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    💖 Hope your day is filled with love, laughter, and sweet memories!
+  </footer>
+
+  <script>
+    function showMessage() {
+      const messageBox = document.getElementById("message-box");
+      messageBox.style.display = "block";
+    }
+
+    function updateTime() {
+      const startDate = new Date('2003-04-26T00:00:00');
+      const now = new Date();
+      const diff = now - startDate;
+
+      const seconds = Math.floor(diff / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours % 24;
+      document.getElementById("minutes").textContent = minutes % 60;
+      document.getElementById("seconds").textContent = seconds % 60;
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    for (let i = 0; i < 60; i++) {
+      let confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * window.innerWidth + 'px';
+      confetti.style.backgroundColor = ['#f06292', '#ba68c8', '#4dd0e1'][Math.floor(Math.random() * 3)];
+      confetti.style.animationDelay = (Math.random() * 6) + 's';
+      document.body.appendChild(confetti);
+    }
+
+
+    const emojis = ['🐖', '🐷', '🐰', '🦊', '🐼', '🐻', '🦁', '🐨'];
+    for (let i = 0; i < 30; i++) {
+      const emoji = document.createElement('div');
+      emoji.className = 'emoji-fall';
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * window.innerWidth + 'px';
+      emoji.style.animationDelay = (Math.random() * 6) + 's';
+      document.body.appendChild(emoji);
+    }
+  </script>
+</body>
+</html>
